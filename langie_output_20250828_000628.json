@@ -1,0 +1,140 @@
+{
+  "ticket_id": "TICKET-20250828-1a950c0f",
+  "status": "resolved",
+  "confidence_score": 92,
+  "response": "Dear John Smith,\n\nThank you for contacting our support team regarding your login issue.\n\nI've analyzed your account and found that it was temporarily locked due to multiple failed login attempts. I have:\n\n1. ✅ Unlocked your account \n2. ✅ Sent a password reset email to john.smith@example.com\n3. ✅ Verified our email delivery system is working\n\nPlease check your inbox (and spam folder) for the password reset email. If you don't receive it within 10 minutes, please reply to this ticket.\n\nFor urgent assistance, you can call our priority support line at 1-800-SUPPORT.\n\nBest regards,\nLangie - AI Customer Support Agent\nTicket ID: TICKET-20250828-1a950c0f",
+  "escalation_reason": null,
+  "stage_logs": [
+    {
+      "stage_name": "INTAKE",
+      "stage_id": 1,
+      "emoji": "📥",
+      "start_time": "2025-08-28 00:06:27.967140",
+      "end_time": "2025-08-28 00:06:27.967292",
+      "abilities_executed": [
+        "accept_payload"
+      ],
+      "success": true,
+      "duration": 0.000152
+    },
+    {
+      "stage_name": "UNDERSTAND",
+      "stage_id": 2,
+      "emoji": "🧠",
+      "start_time": "2025-08-28 00:06:27.967465",
+      "end_time": "2025-08-28 00:06:28.087842",
+      "abilities_executed": [
+        "parse_request_text",
+        "extract_entities"
+      ],
+      "success": true,
+      "duration": 0.120377
+    },
+    {
+      "stage_name": "PREPARE",
+      "stage_id": 3,
+      "emoji": "🛠",
+      "start_time": "2025-08-28 00:06:28.088049",
+      "end_time": "2025-08-28 00:06:28.279979",
+      "abilities_executed": [
+        "normalize_fields",
+        "enrich_records",
+        "add_flags_calculations"
+      ],
+      "success": true,
+      "duration": 0.19193
+    },
+    {
+      "stage_name": "ASK",
+      "stage_id": 4,
+      "emoji": "❓",
+      "start_time": "2025-08-28 00:06:28.280222",
+      "end_time": "2025-08-28 00:06:28.280725",
+      "abilities_executed": [
+        "clarification_check"
+      ],
+      "success": true,
+      "duration": 0.000503
+    },
+    {
+      "stage_name": "RETRIEVE",
+      "stage_id": 6,
+      "emoji": "📚",
+      "start_time": "2025-08-28 00:06:28.280966",
+      "end_time": "2025-08-28 00:06:28.336987",
+      "abilities_executed": [
+        "knowledge_base_search",
+        "store_data"
+      ],
+      "success": true,
+      "duration": 0.056021
+    },
+    {
+      "stage_name": "DECIDE",
+      "stage_id": 7,
+      "emoji": "⚖",
+      "start_time": "2025-08-28 00:06:28.337218",
+      "end_time": "2025-08-28 00:06:28.394094",
+      "abilities_executed": [
+        "solution_evaluation",
+        "escalation_decision"
+      ],
+      "success": true,
+      "duration": 0.056876
+    },
+    {
+      "stage_name": "UPDATE",
+      "stage_id": 8,
+      "emoji": "🔄",
+      "start_time": "2025-08-28 00:06:28.394368",
+      "end_time": "2025-08-28 00:06:28.394946",
+      "abilities_executed": [
+        "update_ticket",
+        "close_ticket"
+      ],
+      "success": true,
+      "duration": 0.000578
+    },
+    {
+      "stage_name": "CREATE",
+      "stage_id": 9,
+      "emoji": "✍",
+      "start_time": "2025-08-28 00:06:28.395326",
+      "end_time": "2025-08-28 00:06:28.451016",
+      "abilities_executed": [
+        "response_generation"
+      ],
+      "success": true,
+      "duration": 0.05569
+    },
+    {
+      "stage_name": "DO",
+      "stage_id": 10,
+      "emoji": "🏃",
+      "start_time": "2025-08-28 00:06:28.451375",
+      "end_time": "2025-08-28 00:06:28.452389",
+      "abilities_executed": [
+        "execute_api_calls",
+        "trigger_notifications"
+      ],
+      "success": true,
+      "duration": 0.001014
+    },
+    {
+      "stage_name": "COMPLETE",
+      "stage_id": 11,
+      "emoji": "✅",
+      "start_time": "2025-08-28 00:06:28.452747",
+      "end_time": "2025-08-28 00:06:28.453388",
+      "abilities_executed": [
+        "output_payload"
+      ],
+      "success": true,
+      "duration": 0.000641
+    }
+  ],
+  "processing_time": 0.486593,
+  "agent_name": "Langie",
+  "agent_version": "1.0.0",
+  "completion_time": "2025-08-28T00:06:28.453765"
+}

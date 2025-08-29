@@ -1,0 +1,50 @@
+agent:
+  name: Langie
+  version: 1.0.0
+  description: LangGraph Customer Support Agent
+
+stages:
+  - stage_id: 1
+    name: INTAKE
+    emoji: 📥
+    mode: entry_only
+  - stage_id: 2
+    name: UNDERSTAND
+    emoji: 🧠
+    mode: deterministic
+  - stage_id: 3
+    name: PREPARE
+    emoji: 🛠
+    mode: deterministic
+  - stage_id: 4
+    name: ASK
+    emoji: ❓
+    mode: human_interaction
+  - stage_id: 5
+    name: WAIT
+    emoji: ⏳
+    mode: deterministic
+  - stage_id: 6
+    name: RETRIEVE
+    emoji: 📚
+    mode: deterministic
+  - stage_id: 7
+    name: DECIDE
+    emoji: ⚖
+    mode: non_deterministic
+  - stage_id: 8
+    name: UPDATE
+    emoji: 🔄
+    mode: deterministic
+  - stage_id: 9
+    name: CREATE
+    emoji: ✍
+    mode: deterministic
+  - stage_id: 10
+    name: DO
+    emoji: 🏃
+    mode: deterministic
+  - stage_id: 11
+    name: COMPLETE
+    emoji: ✅
+    mode: output_only

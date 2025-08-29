@@ -1,0 +1,140 @@
+{
+  "ticket_id": "TICKET-20250828-5e40d1bb",
+  "status": "resolved",
+  "confidence_score": 92,
+  "response": "Dear John Smith,\n\nThank you for contacting our support team regarding your login issue.\n\nI've analyzed your account and found that it was temporarily locked due to multiple failed login attempts. I have:\n\n1. ✅ Unlocked your account \n2. ✅ Sent a password reset email to john.smith@example.com\n3. ✅ Verified our email delivery system is working\n\nPlease check your inbox (and spam folder) for the password reset email. If you don't receive it within 10 minutes, please reply to this ticket.\n\nFor urgent assistance, you can call our priority support line at 1-800-SUPPORT.\n\nBest regards,\nLangie - AI Customer Support Agent\nTicket ID: TICKET-20250828-5e40d1bb",
+  "escalation_reason": null,
+  "stage_logs": [
+    {
+      "stage_name": "INTAKE",
+      "stage_id": 1,
+      "emoji": "📥",
+      "start_time": "2025-08-28 00:10:52.739056",
+      "end_time": "2025-08-28 00:10:52.739297",
+      "abilities_executed": [
+        "accept_payload"
+      ],
+      "success": true,
+      "duration": 0.000241
+    },
+    {
+      "stage_name": "UNDERSTAND",
+      "stage_id": 2,
+      "emoji": "🧠",
+      "start_time": "2025-08-28 00:10:52.740318",
+      "end_time": "2025-08-28 00:10:52.853888",
+      "abilities_executed": [
+        "parse_request_text",
+        "extract_entities"
+      ],
+      "success": true,
+      "duration": 0.11357
+    },
+    {
+      "stage_name": "PREPARE",
+      "stage_id": 3,
+      "emoji": "🛠",
+      "start_time": "2025-08-28 00:10:52.854402",
+      "end_time": "2025-08-28 00:10:53.023456",
+      "abilities_executed": [
+        "normalize_fields",
+        "enrich_records",
+        "add_flags_calculations"
+      ],
+      "success": true,
+      "duration": 0.169054
+    },
+    {
+      "stage_name": "ASK",
+      "stage_id": 4,
+      "emoji": "❓",
+      "start_time": "2025-08-28 00:10:53.023638",
+      "end_time": "2025-08-28 00:10:53.024021",
+      "abilities_executed": [
+        "clarification_check"
+      ],
+      "success": true,
+      "duration": 0.000383
+    },
+    {
+      "stage_name": "RETRIEVE",
+      "stage_id": 6,
+      "emoji": "📚",
+      "start_time": "2025-08-28 00:10:53.024185",
+      "end_time": "2025-08-28 00:10:53.087934",
+      "abilities_executed": [
+        "knowledge_base_search",
+        "store_data"
+      ],
+      "success": true,
+      "duration": 0.063749
+    },
+    {
+      "stage_name": "DECIDE",
+      "stage_id": 7,
+      "emoji": "⚖",
+      "start_time": "2025-08-28 00:10:53.088126",
+      "end_time": "2025-08-28 00:10:53.144378",
+      "abilities_executed": [
+        "solution_evaluation",
+        "escalation_decision"
+      ],
+      "success": true,
+      "duration": 0.056252
+    },
+    {
+      "stage_name": "UPDATE",
+      "stage_id": 8,
+      "emoji": "🔄",
+      "start_time": "2025-08-28 00:10:53.144551",
+      "end_time": "2025-08-28 00:10:53.145063",
+      "abilities_executed": [
+        "update_ticket",
+        "close_ticket"
+      ],
+      "success": true,
+      "duration": 0.000512
+    },
+    {
+      "stage_name": "CREATE",
+      "stage_id": 9,
+      "emoji": "✍",
+      "start_time": "2025-08-28 00:10:53.145411",
+      "end_time": "2025-08-28 00:10:53.199945",
+      "abilities_executed": [
+        "response_generation"
+      ],
+      "success": true,
+      "duration": 0.054534
+    },
+    {
+      "stage_name": "DO",
+      "stage_id": 10,
+      "emoji": "🏃",
+      "start_time": "2025-08-28 00:10:53.200173",
+      "end_time": "2025-08-28 00:10:53.200880",
+      "abilities_executed": [
+        "execute_api_calls",
+        "trigger_notifications"
+      ],
+      "success": true,
+      "duration": 0.000707
+    },
+    {
+      "stage_name": "COMPLETE",
+      "stage_id": 11,
+      "emoji": "✅",
+      "start_time": "2025-08-28 00:10:53.201163",
+      "end_time": "2025-08-28 00:10:53.201549",
+      "abilities_executed": [
+        "output_payload"
+      ],
+      "success": true,
+      "duration": 0.000386
+    }
+  ],
+  "processing_time": 0.462965,
+  "agent_name": "Langie",
+  "agent_version": "1.0.0",
+  "completion_time": "2025-08-28T00:10:53.202038"
+}

@@ -1,0 +1,218 @@
+# LangGraph Customer Support Agent Configuration
+
+agent:
+  name: Langie
+  version: 1.0.0
+  description: A structured and logical LangGraph Agent for customer support workflows
+  
+# Input Schema
+input_schema:
+  type: "object"
+  properties:
+    customer_name:
+      type: "string"
+      description: "Name of the customer"
+    email:
+      type: "string" 
+      format: "email"
+      description: "Customer email address"
+    query:
+      type: "string"
+      description: "Customer support query/issue"
+    priority:
+      type: "string"
+      enum: ["low", "medium", "high", "critical"]
+      description: "Priority level of the ticket"
+    ticket_id:
+      type: "string"
+      description: "Unique ticket identifier"
+  required: ["customer_name", "email", "query", "priority", "ticket_id"]
+
+# 11 Stages Definition
+stages:
+  - stage_id: 1
+    name: "INTAKE"
+    emoji: "📥"
+    mode: "entry_only"
+    description: "Accept payload"
+    abilities:
+      - name: "accept_payload"
+        description: "Capture incoming request payload"
+        server: "internal"
+
+  - stage_id: 2
+    name: "UNDERSTAND" 
+    emoji: "🧠"
+    mode: "deterministic"
+    description: "Parse and extract entities from request"
+    abilities:
+      - name: "parse_request_text"
+        description: "Convert unstructured request to structured data"
+        server: "COMMON"
+      - name: "extract_entities"
+        description: "Identify product, account, dates"
+        server: "ATLAS"
+
+  - stage_id: 3
+    name: "PREPARE"
+    emoji: "🛠"
+    mode: "deterministic" 
+    description: "Normalize and enrich data"
+    abilities:
+      - name: "normalize_fields"
+        description: "Standardize dates, codes, IDs"
+        server: "COMMON"
+      - name: "enrich_records"
+        description: "Add SLA, historical ticket info"
+        server: "ATLAS"
+      - name: "add_flags_calculations"
+        description: "Compute priority or SLA risk"
+        server: "COMMON"
+
+  - stage_id: 4
+    name: "ASK"
+    emoji: "❓"
+    mode: "human_interaction"
+    description: "Request clarification if needed"
+    abilities:
+      - name: "clarify_question"
+        description: "Request missing information"
+        server: "ATLAS"
+
+  - stage_id: 5
+    name: "WAIT"
+    emoji: "⏳"
+    mode: "deterministic"
+    description: "Wait and process response"
+    abilities:
+      - name: "extract_answer"
+        description: "Wait and capture concise response"
+        server: "ATLAS"
+      - name: "store_answer"
+        description: "Update payload with response"
+        server: "internal"
+
+  - stage_id: 6
+    name: "RETRIEVE"
+    emoji: "📚"
+    mode: "deterministic"
+    description: "Search knowledge base"
+    abilities:
+      - name: "knowledge_base_search"
+        description: "Lookup KB or FAQ"
+        server: "ATLAS"
+      - name: "store_data"
+        description: "Attach retrieved info to payload"
+        server: "internal"
+
+  - stage_id: 7
+    name: "DECIDE"
+    emoji: "⚖"
+    mode: "non_deterministic"
+    description: "Evaluate solutions and make decisions"
+    user_prompt: "Score solutions and escalate if <90"
+    abilities:
+      - name: "solution_evaluation"
+        description: "Score potential solutions 1-100"
+        server: "COMMON"
+      - name: "escalation_decision"
+        description: "Assign to human agent if score <90"
+        server: "ATLAS"
+      - name: "update_payload"
+        description: "Record decision outcomes"
+        server: "internal"
+
+  - stage_id: 8
+    name: "UPDATE"
+    emoji: "🔄"
+    mode: "deterministic"
+    description: "Update ticket status"
+    abilities:
+      - name: "update_ticket"
+        description: "Modify status, fields, priority"
+        server: "ATLAS"
+      - name: "close_ticket"
+        description: "Mark issue resolved"
+        server: "ATLAS"
+
+  - stage_id: 9
+    name: "CREATE"
+    emoji: "✍"
+    mode: "deterministic"
+    description: "Generate customer response"
+    abilities:
+      - name: "response_generation"
+        description: "Draft customer reply"
+        server: "COMMON"
+
+  - stage_id: 10
+    name: "DO"
+    emoji: "🏃"
+    mode: "deterministic"
+    description: "Execute actions and notifications"
+    abilities:
+      - name: "execute_api_calls"
+        description: "Trigger CRM/order system actions"
+        server: "ATLAS"
+      - name: "trigger_notifications"
+        description: "Notify customer"
+        server: "ATLAS"
+
+  - stage_id: 11
+    name: "COMPLETE"
+    emoji: "✅"
+    mode: "output_only"
+    description: "Output final payload"
+    abilities:
+      - name: "output_payload"
+        description: "Print final structured payload"
+        server: "internal"
+
+# MCP Server Mapping
+mcp_servers:
+  COMMON:
+    url: "${COMMON_SERVER_URL}"
+    key: "${COMMON_SERVER_KEY}"
+    description: "Abilities with no external data"
+  ATLAS:
+    url: "${ATLAS_SERVER_URL}" 
+    key: "${ATLAS_SERVER_KEY}"
+    description: "Abilities requiring external system interaction"
+
+# Output Schema
+output_schema:
+  type: "object"
+  properties:
+    ticket_id:
+      type: "string"
+    status:
+      type: "string"
+      enum: ["resolved", "escalated", "pending"]
+    response:
+      type: "string"
+      description: "Generated customer response"
+    confidence_score:
+      type: "number"
+      minimum: 0
+      maximum: 100
+    escalation_reason:
+      type: "string"
+      description: "Reason for escalation if applicable"
+    stage_logs:
+      type: "array"
+      items:
+        type: "object"
+        properties:
+          stage_name: 
+            type: "string"
+          abilities_executed:
+            type: "array"
+            items:
+              type: "string"
+          mcp_server_used:
+            type: "string"
+          execution_time:
+            type: "string"
+    final_payload:
+      type: "object"
+      description: "Complete processed payload with all enrichments"

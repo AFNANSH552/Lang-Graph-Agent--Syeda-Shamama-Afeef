@@ -1,0 +1,7 @@
+{
+  "customer_name": "John Smith",
+  "email": "john.smith@example.com",
+  "query": "I can't login to my account. It says my password is incorrect but I'm sure it's right. This is urgent as I need to access my account for an important transaction today. I've tried resetting my password multiple times but I'm not receiving the reset email.",
+  "priority": "high",
+  "ticket_id": "TICKET-20241127-001"
+}
