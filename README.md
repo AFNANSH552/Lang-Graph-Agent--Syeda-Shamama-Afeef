@@ -1,5 +1,9 @@
 # 🤖 Langie - LangGraph Customer Support Agent by Syeda shamama Afeef
 
+![Alt text](B.png)
+![Alt text](C.png)
+![Alt text](A.png)
+
 A structured and logical LangGraph Agent that models customer support workflows as graph-based stages with intelligent state management, MCP client integration, and both deterministic and non-deterministic execution modes.
 
 ## 🎯 Overview
@@ -291,3 +295,5 @@ For questions, issues, or feature requests:
 ---
 
 **Langie** - *Making customer support intelligent, one stage at a time* 🤖✨
+
+
